@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +13,53 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Background.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TKA-eB-18N">
+                                <rect key="frame" x="25.666666666666657" y="266.66666666666669" width="363" height="363.00000000000006"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mcs-4U-nz4">
+                                <rect key="frame" x="112" y="360.66666666666669" width="190" height="175.00000000000006"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Polygon 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="yzZ-jG-FTW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Polygon 2.png" translatesAutoresizingMaskIntoConstraints="NO" id="rWG-It-DcM">
+                                <rect key="frame" x="0.0" y="725" width="414" height="171"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TKA-eB-18N" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="18L-lF-nYm"/>
+                            <constraint firstItem="Mcs-4U-nz4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Xp-EL-vlp"/>
+                            <constraint firstItem="Mcs-4U-nz4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="XIS-iL-b1G"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yzZ-jG-FTW" secondAttribute="trailing" id="Y0x-57-XWI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rWG-It-DcM" secondAttribute="trailing" id="apw-Dq-XlK"/>
+                            <constraint firstItem="TKA-eB-18N" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cNn-jy-ZE2"/>
+                            <constraint firstItem="yzZ-jG-FTW" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="czF-Bk-ovx"/>
+                            <constraint firstItem="TKA-eB-18N" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fTi-x4-vxq"/>
+                            <constraint firstItem="TKA-eB-18N" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fbh-vD-yKF"/>
+                            <constraint firstAttribute="bottom" secondItem="rWG-It-DcM" secondAttribute="bottom" id="gkt-dU-Gb7"/>
+                            <constraint firstItem="yzZ-jG-FTW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jE4-pl-xCU"/>
+                            <constraint firstItem="rWG-It-DcM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lVU-Ci-BXx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo Background.png" width="363" height="363"/>
+        <image name="Logo.png" width="190" height="175"/>
+        <image name="Polygon 1.png" width="393" height="176"/>
+        <image name="Polygon 2.png" width="393" height="171"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -3,16 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		9DF64AEE2D9D08FB00B1857D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */; };
 		9DF64AF02D9D08FB00B1857D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */; };
 		9DF64AF22D9D08FB00B1857D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AF12D9D08FB00B1857D /* ViewController.swift */; };
-		9DF64AF52D9D08FB00B1857D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64AF32D9D08FB00B1857D /* Main.storyboard */; };
 		9DF64AF72D9D08FE00B1857D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64AF62D9D08FE00B1857D /* Assets.xcassets */; };
 		9DF64AFA2D9D08FE00B1857D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64AF82D9D08FE00B1857D /* LaunchScreen.storyboard */; };
+		9DF64B082D9D10E000B1857D /* Polygon 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64B062D9D10E000B1857D /* Polygon 2.png */; };
+		9DF64B092D9D10E000B1857D /* Polygon 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64B072D9D10E000B1857D /* Polygon 1.png */; };
+		9DF64B0E2D9D111500B1857D /* Logo Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64B102D9D111500B1857D /* Logo Background.png */; };
+		9DF64B112D9D111C00B1857D /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64B132D9D111C00B1857D /* Logo.png */; };
+		9DF64B182D9D175500B1857D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64B162D9D175500B1857D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,19 +24,21 @@
 		9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9DF64AF12D9D08FB00B1857D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9DF64AF42D9D08FB00B1857D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DF64AF62D9D08FE00B1857D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DF64AF92D9D08FE00B1857D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DF64AFB2D9D08FF00B1857D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF64B062D9D10E000B1857D /* Polygon 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Polygon 2.png"; path = "DigiDiary/Assests/Background_assest/Polygon 2.png"; sourceTree = SOURCE_ROOT; };
+		9DF64B072D9D10E000B1857D /* Polygon 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Polygon 1.png"; path = "DigiDiary/Assests/Background_assest/Polygon 1.png"; sourceTree = SOURCE_ROOT; };
+		9DF64B0F2D9D111500B1857D /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/Logo Background.png"; sourceTree = "<group>"; };
+		9DF64B122D9D111C00B1857D /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/Logo.png; sourceTree = "<group>"; };
+		9DF64B172D9D175500B1857D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9DF64AE72D9D08FB00B1857D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -56,15 +62,43 @@
 		9DF64AEC2D9D08FB00B1857D /* DigiDiary */ = {
 			isa = PBXGroup;
 			children = (
+				9DF64B012D9D0D4B00B1857D /* Assests */,
 				9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */,
 				9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */,
 				9DF64AF12D9D08FB00B1857D /* ViewController.swift */,
-				9DF64AF32D9D08FB00B1857D /* Main.storyboard */,
+				9DF64B162D9D175500B1857D /* Main.storyboard */,
 				9DF64AF62D9D08FE00B1857D /* Assets.xcassets */,
 				9DF64AF82D9D08FE00B1857D /* LaunchScreen.storyboard */,
 				9DF64AFB2D9D08FF00B1857D /* Info.plist */,
 			);
 			path = DigiDiary;
+			sourceTree = "<group>";
+		};
+		9DF64B012D9D0D4B00B1857D /* Assests */ = {
+			isa = PBXGroup;
+			children = (
+				9DF64B052D9D106C00B1857D /* BackgroundAssest */,
+				9DF64B022D9D0D8A00B1857D /* Icons */,
+			);
+			path = Assests;
+			sourceTree = "<group>";
+		};
+		9DF64B022D9D0D8A00B1857D /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				9DF64B102D9D111500B1857D /* Logo Background.png */,
+				9DF64B132D9D111C00B1857D /* Logo.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9DF64B052D9D106C00B1857D /* BackgroundAssest */ = {
+			isa = PBXGroup;
+			children = (
+				9DF64B072D9D10E000B1857D /* Polygon 1.png */,
+				9DF64B062D9D10E000B1857D /* Polygon 2.png */,
+			);
+			path = BackgroundAssest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,8 +114,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = DigiDiary;
 			productName = DigiDiary;
 			productReference = 9DF64AEA2D9D08FB00B1857D /* DigiDiary.app */;
@@ -95,7 +127,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					9DF64AE92D9D08FB00B1857D = {
 						CreatedOnToolsVersion = 14.2;
@@ -103,7 +135,6 @@
 				};
 			};
 			buildConfigurationList = 9DF64AE52D9D08FB00B1857D /* Build configuration list for PBXProject "DigiDiary" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -111,6 +142,7 @@
 				Base,
 			);
 			mainGroup = 9DF64AE12D9D08FB00B1857D;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = 9DF64AEB2D9D08FB00B1857D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -123,38 +155,30 @@
 /* Begin PBXResourcesBuildPhase section */
 		9DF64AE82D9D08FB00B1857D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
+				9DF64B182D9D175500B1857D /* Main.storyboard in Resources */,
+				9DF64B112D9D111C00B1857D /* Logo.png in Resources */,
 				9DF64AFA2D9D08FE00B1857D /* LaunchScreen.storyboard in Resources */,
 				9DF64AF72D9D08FE00B1857D /* Assets.xcassets in Resources */,
-				9DF64AF52D9D08FB00B1857D /* Main.storyboard in Resources */,
+				9DF64B082D9D10E000B1857D /* Polygon 2.png in Resources */,
+				9DF64B0E2D9D111500B1857D /* Logo Background.png in Resources */,
+				9DF64B092D9D10E000B1857D /* Polygon 1.png in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9DF64AE62D9D08FB00B1857D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				9DF64AF22D9D08FB00B1857D /* ViewController.swift in Sources */,
 				9DF64AEE2D9D08FB00B1857D /* AppDelegate.swift in Sources */,
 				9DF64AF02D9D08FB00B1857D /* SceneDelegate.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9DF64AF32D9D08FB00B1857D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9DF64AF42D9D08FB00B1857D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9DF64AF82D9D08FE00B1857D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -163,10 +187,34 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		9DF64B102D9D111500B1857D /* Logo Background.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF64B0F2D9D111500B1857D /* Base */,
+			);
+			name = "Logo Background.png";
+			sourceTree = "<group>";
+		};
+		9DF64B132D9D111C00B1857D /* Logo.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF64B122D9D111C00B1857D /* Base */,
+			);
+			name = Logo.png;
+			sourceTree = "<group>";
+		};
+		9DF64B162D9D175500B1857D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF64B172D9D175500B1857D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9DF64AFC2D9D08FF00B1857D /* Debug */ = {
+		9DF64AFC2D9D08FF00B1857D /* Debug configuration for PBXProject "DigiDiary" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -200,8 +248,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = L65484BGRJ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -226,7 +276,7 @@
 			};
 			name = Debug;
 		};
-		9DF64AFD2D9D08FF00B1857D /* Release */ = {
+		9DF64AFD2D9D08FF00B1857D /* Release configuration for PBXProject "DigiDiary" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -260,8 +310,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L65484BGRJ;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -280,7 +332,7 @@
 			};
 			name = Release;
 		};
-		9DF64AFF2D9D08FF00B1857D /* Debug */ = {
+		9DF64AFF2D9D08FF00B1857D /* Debug configuration for PBXNativeTarget "DigiDiary" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -288,7 +340,6 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L65484BGRJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DigiDiary/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -297,7 +348,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +362,7 @@
 			};
 			name = Debug;
 		};
-		9DF64B002D9D08FF00B1857D /* Release */ = {
+		9DF64B002D9D08FF00B1857D /* Release configuration for PBXNativeTarget "DigiDiary" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -319,7 +370,6 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L65484BGRJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DigiDiary/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -328,7 +378,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,19 +398,17 @@
 		9DF64AE52D9D08FB00B1857D /* Build configuration list for PBXProject "DigiDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DF64AFC2D9D08FF00B1857D /* Debug */,
-				9DF64AFD2D9D08FF00B1857D /* Release */,
+				9DF64AFC2D9D08FF00B1857D /* Debug configuration for PBXProject "DigiDiary" */,
+				9DF64AFD2D9D08FF00B1857D /* Release configuration for PBXProject "DigiDiary" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		9DF64AFE2D9D08FF00B1857D /* Build configuration list for PBXNativeTarget "DigiDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DF64AFF2D9D08FF00B1857D /* Debug */,
-				9DF64B002D9D08FF00B1857D /* Release */,
+				9DF64AFF2D9D08FF00B1857D /* Debug configuration for PBXNativeTarget "DigiDiary" */,
+				9DF64B002D9D08FF00B1857D /* Release configuration for PBXNativeTarget "DigiDiary" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
