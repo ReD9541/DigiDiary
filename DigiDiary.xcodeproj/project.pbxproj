@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DDA78452DA4F67700E7F001 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78442DA4F67700E7F001 /* LoginVC.swift */; };
+		9DDA78472DA4F6DB00E7F001 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78462DA4F6DB00E7F001 /* SignUpVC.swift */; };
+		9DDA78492DA4F89700E7F001 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78482DA4F89700E7F001 /* HomeVC.swift */; };
+		9DDA784B2DA4F8C100E7F001 /* JournalShowCaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA784A2DA4F8C100E7F001 /* JournalShowCaseVC.swift */; };
+		9DDA784D2DA4F8D500E7F001 /* JournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA784C2DA4F8D500E7F001 /* JournalVC.swift */; };
+		9DDA784F2DA4F8E800E7F001 /* ProfileSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA784E2DA4F8E800E7F001 /* ProfileSettingsVC.swift */; };
+		9DDA78512DA4F90D00E7F001 /* AddJournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78502DA4F90D00E7F001 /* AddJournalVC.swift */; };
+		9DDA78532DA4F92B00E7F001 /* TipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78522DA4F92B00E7F001 /* TipsVC.swift */; };
+		9DDA78552DA4F97E00E7F001 /* StreakDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78542DA4F97E00E7F001 /* StreakDetailVC.swift */; };
 		9DF64AEE2D9D08FB00B1857D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */; };
 		9DF64AF02D9D08FB00B1857D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */; };
 		9DF64AF22D9D08FB00B1857D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AF12D9D08FB00B1857D /* ViewController.swift */; };
@@ -20,6 +29,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9DDA78442DA4F67700E7F001 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		9DDA78462DA4F6DB00E7F001 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		9DDA78482DA4F89700E7F001 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		9DDA784A2DA4F8C100E7F001 /* JournalShowCaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalShowCaseVC.swift; sourceTree = "<group>"; };
+		9DDA784C2DA4F8D500E7F001 /* JournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalVC.swift; sourceTree = "<group>"; };
+		9DDA784E2DA4F8E800E7F001 /* ProfileSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsVC.swift; sourceTree = "<group>"; };
+		9DDA78502DA4F90D00E7F001 /* AddJournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalVC.swift; sourceTree = "<group>"; };
+		9DDA78522DA4F92B00E7F001 /* TipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsVC.swift; sourceTree = "<group>"; };
+		9DDA78542DA4F97E00E7F001 /* StreakDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakDetailVC.swift; sourceTree = "<group>"; };
 		9DF64AEA2D9D08FB00B1857D /* DigiDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigiDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,9 +85,18 @@
 				9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */,
 				9DF64AF12D9D08FB00B1857D /* ViewController.swift */,
 				9DF64B162D9D175500B1857D /* Main.storyboard */,
+				9DDA78482DA4F89700E7F001 /* HomeVC.swift */,
+				9DDA784A2DA4F8C100E7F001 /* JournalShowCaseVC.swift */,
+				9DDA784C2DA4F8D500E7F001 /* JournalVC.swift */,
+				9DDA784E2DA4F8E800E7F001 /* ProfileSettingsVC.swift */,
+				9DDA78502DA4F90D00E7F001 /* AddJournalVC.swift */,
+				9DDA78522DA4F92B00E7F001 /* TipsVC.swift */,
+				9DDA78542DA4F97E00E7F001 /* StreakDetailVC.swift */,
 				9DF64AF62D9D08FE00B1857D /* Assets.xcassets */,
 				9DF64AF82D9D08FE00B1857D /* LaunchScreen.storyboard */,
 				9DF64AFB2D9D08FF00B1857D /* Info.plist */,
+				9DDA78442DA4F67700E7F001 /* LoginVC.swift */,
+				9DDA78462DA4F6DB00E7F001 /* SignUpVC.swift */,
 			);
 			path = DigiDiary;
 			sourceTree = "<group>";
@@ -173,6 +200,15 @@
 			files = (
 				9DF64AF22D9D08FB00B1857D /* ViewController.swift in Sources */,
 				9DF64AEE2D9D08FB00B1857D /* AppDelegate.swift in Sources */,
+				9DDA78512DA4F90D00E7F001 /* AddJournalVC.swift in Sources */,
+				9DDA784B2DA4F8C100E7F001 /* JournalShowCaseVC.swift in Sources */,
+				9DDA78532DA4F92B00E7F001 /* TipsVC.swift in Sources */,
+				9DDA78552DA4F97E00E7F001 /* StreakDetailVC.swift in Sources */,
+				9DDA78452DA4F67700E7F001 /* LoginVC.swift in Sources */,
+				9DDA78492DA4F89700E7F001 /* HomeVC.swift in Sources */,
+				9DDA784F2DA4F8E800E7F001 /* ProfileSettingsVC.swift in Sources */,
+				9DDA78472DA4F6DB00E7F001 /* SignUpVC.swift in Sources */,
+				9DDA784D2DA4F8D500E7F001 /* JournalVC.swift in Sources */,
 				9DF64AF02D9D08FB00B1857D /* SceneDelegate.swift in Sources */,
 			);
 		};
@@ -357,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DigiDiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -387,7 +423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DigiDiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
