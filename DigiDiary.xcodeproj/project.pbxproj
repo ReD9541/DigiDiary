@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9DDA78452DA4F67700E7F001 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78442DA4F67700E7F001 /* LoginVC.swift */; };
-		9DDA78472DA4F6DB00E7F001 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78462DA4F6DB00E7F001 /* SignUpVC.swift */; };
-		9DDA78492DA4F89700E7F001 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78482DA4F89700E7F001 /* HomeVC.swift */; };
-		9DDA784B2DA4F8C100E7F001 /* JournalShowCaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA784A2DA4F8C100E7F001 /* JournalShowCaseVC.swift */; };
-		9DDA784D2DA4F8D500E7F001 /* JournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA784C2DA4F8D500E7F001 /* JournalVC.swift */; };
-		9DDA784F2DA4F8E800E7F001 /* ProfileSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA784E2DA4F8E800E7F001 /* ProfileSettingsVC.swift */; };
-		9DDA78512DA4F90D00E7F001 /* AddJournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78502DA4F90D00E7F001 /* AddJournalVC.swift */; };
-		9DDA78532DA4F92B00E7F001 /* TipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78522DA4F92B00E7F001 /* TipsVC.swift */; };
-		9DDA78552DA4F97E00E7F001 /* StreakDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDA78542DA4F97E00E7F001 /* StreakDetailVC.swift */; };
+		9DC61F1E2DA8BF880059A2C8 /* pfp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC61F182DA8BF880059A2C8 /* pfp.png */; };
+		9DC61F1F2DA8BF880059A2C8 /* Top_shapeHome.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC61F1B2DA8BF880059A2C8 /* Top_shapeHome.png */; };
+		9DC61F202DA8BF880059A2C8 /* bottom_shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC61F152DA8BF880059A2C8 /* bottom_shape.png */; };
+		9DC61F212DA8BF880059A2C8 /* Streak Sign_Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DC61F192DA8BF880059A2C8 /* Streak Sign_Yellow.png */; };
+		9DDA785A2DA60F8200E7F001 /* Next_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DDA78572DA60F8200E7F001 /* Next_btn.png */; };
 		9DF64AEE2D9D08FB00B1857D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */; };
 		9DF64AF02D9D08FB00B1857D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */; };
 		9DF64AF22D9D08FB00B1857D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AF12D9D08FB00B1857D /* ViewController.swift */; };
@@ -29,15 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9DDA78442DA4F67700E7F001 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		9DDA78462DA4F6DB00E7F001 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
-		9DDA78482DA4F89700E7F001 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		9DDA784A2DA4F8C100E7F001 /* JournalShowCaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalShowCaseVC.swift; sourceTree = "<group>"; };
-		9DDA784C2DA4F8D500E7F001 /* JournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalVC.swift; sourceTree = "<group>"; };
-		9DDA784E2DA4F8E800E7F001 /* ProfileSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsVC.swift; sourceTree = "<group>"; };
-		9DDA78502DA4F90D00E7F001 /* AddJournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalVC.swift; sourceTree = "<group>"; };
-		9DDA78522DA4F92B00E7F001 /* TipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsVC.swift; sourceTree = "<group>"; };
-		9DDA78542DA4F97E00E7F001 /* StreakDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakDetailVC.swift; sourceTree = "<group>"; };
+		9DC61F152DA8BF880059A2C8 /* bottom_shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_shape.png; sourceTree = "<group>"; };
+		9DC61F182DA8BF880059A2C8 /* pfp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pfp.png; sourceTree = "<group>"; };
+		9DC61F192DA8BF880059A2C8 /* Streak Sign_Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Streak Sign_Yellow.png"; sourceTree = "<group>"; };
+		9DC61F1B2DA8BF880059A2C8 /* Top_shapeHome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Top_shapeHome.png; sourceTree = "<group>"; };
+		9DDA78572DA60F8200E7F001 /* Next_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next_btn.png; sourceTree = "<group>"; };
 		9DF64AEA2D9D08FB00B1857D /* DigiDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigiDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +43,19 @@
 		9DF64B122D9D111C00B1857D /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/Logo.png; sourceTree = "<group>"; };
 		9DF64B172D9D175500B1857D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9DC61F112DA8BB5A0059A2C8 /* UIKit */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		9DDA78562DA60AFB00E7F001 /* Screens */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screens;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9DF64AE72D9D08FB00B1857D /* Frameworks */ = {
@@ -80,23 +85,15 @@
 		9DF64AEC2D9D08FB00B1857D /* DigiDiary */ = {
 			isa = PBXGroup;
 			children = (
+				9DDA78562DA60AFB00E7F001 /* Screens */,
 				9DF64B012D9D0D4B00B1857D /* Assests */,
 				9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */,
 				9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */,
 				9DF64AF12D9D08FB00B1857D /* ViewController.swift */,
 				9DF64B162D9D175500B1857D /* Main.storyboard */,
-				9DDA78482DA4F89700E7F001 /* HomeVC.swift */,
-				9DDA784A2DA4F8C100E7F001 /* JournalShowCaseVC.swift */,
-				9DDA784C2DA4F8D500E7F001 /* JournalVC.swift */,
-				9DDA784E2DA4F8E800E7F001 /* ProfileSettingsVC.swift */,
-				9DDA78502DA4F90D00E7F001 /* AddJournalVC.swift */,
-				9DDA78522DA4F92B00E7F001 /* TipsVC.swift */,
-				9DDA78542DA4F97E00E7F001 /* StreakDetailVC.swift */,
 				9DF64AF62D9D08FE00B1857D /* Assets.xcassets */,
 				9DF64AF82D9D08FE00B1857D /* LaunchScreen.storyboard */,
 				9DF64AFB2D9D08FF00B1857D /* Info.plist */,
-				9DDA78442DA4F67700E7F001 /* LoginVC.swift */,
-				9DDA78462DA4F6DB00E7F001 /* SignUpVC.swift */,
 			);
 			path = DigiDiary;
 			sourceTree = "<group>";
@@ -104,6 +101,7 @@
 		9DF64B012D9D0D4B00B1857D /* Assests */ = {
 			isa = PBXGroup;
 			children = (
+				9DC61F112DA8BB5A0059A2C8 /* UIKit */,
 				9DF64B052D9D106C00B1857D /* BackgroundAssest */,
 				9DF64B022D9D0D8A00B1857D /* Icons */,
 			);
@@ -122,6 +120,11 @@
 		9DF64B052D9D106C00B1857D /* BackgroundAssest */ = {
 			isa = PBXGroup;
 			children = (
+				9DC61F152DA8BF880059A2C8 /* bottom_shape.png */,
+				9DC61F182DA8BF880059A2C8 /* pfp.png */,
+				9DC61F192DA8BF880059A2C8 /* Streak Sign_Yellow.png */,
+				9DC61F1B2DA8BF880059A2C8 /* Top_shapeHome.png */,
+				9DDA78572DA60F8200E7F001 /* Next_btn.png */,
 				9DF64B072D9D10E000B1857D /* Polygon 1.png */,
 				9DF64B062D9D10E000B1857D /* Polygon 2.png */,
 			);
@@ -140,6 +143,10 @@
 				9DF64AE82D9D08FB00B1857D /* Resources */,
 			);
 			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				9DC61F112DA8BB5A0059A2C8 /* UIKit */,
+				9DDA78562DA60AFB00E7F001 /* Screens */,
 			);
 			name = DigiDiary;
 			productName = DigiDiary;
@@ -185,8 +192,13 @@
 			files = (
 				9DF64B182D9D175500B1857D /* Main.storyboard in Resources */,
 				9DF64B112D9D111C00B1857D /* Logo.png in Resources */,
+				9DC61F1E2DA8BF880059A2C8 /* pfp.png in Resources */,
+				9DC61F1F2DA8BF880059A2C8 /* Top_shapeHome.png in Resources */,
+				9DC61F202DA8BF880059A2C8 /* bottom_shape.png in Resources */,
+				9DC61F212DA8BF880059A2C8 /* Streak Sign_Yellow.png in Resources */,
 				9DF64AFA2D9D08FE00B1857D /* LaunchScreen.storyboard in Resources */,
 				9DF64AF72D9D08FE00B1857D /* Assets.xcassets in Resources */,
+				9DDA785A2DA60F8200E7F001 /* Next_btn.png in Resources */,
 				9DF64B082D9D10E000B1857D /* Polygon 2.png in Resources */,
 				9DF64B0E2D9D111500B1857D /* Logo Background.png in Resources */,
 				9DF64B092D9D10E000B1857D /* Polygon 1.png in Resources */,
@@ -200,15 +212,6 @@
 			files = (
 				9DF64AF22D9D08FB00B1857D /* ViewController.swift in Sources */,
 				9DF64AEE2D9D08FB00B1857D /* AppDelegate.swift in Sources */,
-				9DDA78512DA4F90D00E7F001 /* AddJournalVC.swift in Sources */,
-				9DDA784B2DA4F8C100E7F001 /* JournalShowCaseVC.swift in Sources */,
-				9DDA78532DA4F92B00E7F001 /* TipsVC.swift in Sources */,
-				9DDA78552DA4F97E00E7F001 /* StreakDetailVC.swift in Sources */,
-				9DDA78452DA4F67700E7F001 /* LoginVC.swift in Sources */,
-				9DDA78492DA4F89700E7F001 /* HomeVC.swift in Sources */,
-				9DDA784F2DA4F8E800E7F001 /* ProfileSettingsVC.swift in Sources */,
-				9DDA78472DA4F6DB00E7F001 /* SignUpVC.swift in Sources */,
-				9DDA784D2DA4F8D500E7F001 /* JournalVC.swift in Sources */,
 				9DF64AF02D9D08FB00B1857D /* SceneDelegate.swift in Sources */,
 			);
 		};
