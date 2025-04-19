@@ -90,5 +90,9 @@ class SignUpVC: UIViewController {
         present(ac, animated: true)
     }
     
+    @IBAction func loginLabelTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "unwindToLogin", sender: self)
+    }
+    
 }
 

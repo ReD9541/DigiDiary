@@ -10,6 +10,8 @@ import FirebaseAuth
 
 class LoginVC: UIViewController {
     
+    // MARK: - Initialization
+
     @IBOutlet private weak var signupLabelButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -32,16 +34,7 @@ class LoginVC: UIViewController {
     @IBAction func unwindToLogin(_ segue: UIStoryboardSegue) {
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
     @IBAction func loginTapped(_ sender: UIButton) {
         
         let email = emailTextField.text ?? ""
@@ -58,6 +51,7 @@ class LoginVC: UIViewController {
             return showAlert(title: "Password Required", message: "Please enter a password.")
         }
         
+        // MARK: - Authentication and Navigation
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
             guard let self = self else { return }
             if let err = error {
@@ -67,9 +61,11 @@ class LoginVC: UIViewController {
             }
             
             //for successful login
-            if let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") {
-                    self.navigationController?.pushViewController(homeVC, animated: true)
-                  }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBar") as? UITabBarController {
+                tabBarVC.modalPresentationStyle = .fullScreen
+                self.present(tabBarVC, animated: true, completion: nil)
+            }
         }
     }
     
