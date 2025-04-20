@@ -13,8 +13,7 @@ class HomeVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHome" {
             if let destinationVC = segue.destination as? HomeVC {
-                // Pass data like:
-                // destinationVC.user = loggedInUser
+             
             }
         }
     }

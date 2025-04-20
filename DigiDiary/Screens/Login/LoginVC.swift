@@ -64,6 +64,8 @@ class LoginVC: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBar") as? UITabBarController {
                 tabBarVC.modalPresentationStyle = .fullScreen
+                
+                tabBarVC.selectedIndex = 2
                 self.present(tabBarVC, animated: true, completion: nil)
             }
         }
