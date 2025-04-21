@@ -57,6 +57,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		9D7A937B2DB576230082D527 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9DC61F112DA8BB5A0059A2C8 /* UIKit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = UIKit;
@@ -107,6 +112,7 @@
 		9DF64AEC2D9D08FB00B1857D /* DigiDiary */ = {
 			isa = PBXGroup;
 			children = (
+				9D7A937B2DB576230082D527 /* Models */,
 				9DDA78562DA60AFB00E7F001 /* Screens */,
 				9DF64B012D9D0D4B00B1857D /* Assests */,
 				9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */,
@@ -168,6 +174,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
+				9D7A937B2DB576230082D527 /* Models */,
 				9DC61F112DA8BB5A0059A2C8 /* UIKit */,
 				9DDA78562DA60AFB00E7F001 /* Screens */,
 			);
@@ -436,7 +443,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -466,7 +473,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
