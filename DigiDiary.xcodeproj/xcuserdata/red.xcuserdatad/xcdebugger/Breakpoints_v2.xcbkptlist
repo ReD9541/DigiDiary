@@ -7,33 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04B347BB-3AE1-45FB-B1F9-2CA7C72644BE"
+            uuid = "A993B89F-406E-4F2B-BC5A-BC29397C7A7A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigiDiary/Screens/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "HomeVC"
-            landmarkType = "3">
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "journalTapped()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "167B28B1-57CF-4031-850F-56DF6DCDE163"
+            uuid = "8DD35F04-3817-471D-8DC8-BB4FD9DB8AA7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigiDiary/Screens/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "HomeVC"
-            landmarkType = "3">
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "streakInfoTapped()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

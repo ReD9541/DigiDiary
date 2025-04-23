@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class HomeVC: UIViewController {
-    //MARK: IObuttons
+    // MARK: – IBOutlets
     
     @IBOutlet weak var welcomeusernameLabel: UILabel!
     @IBOutlet weak var streaknumberLabel: UILabel!
@@ -24,6 +24,12 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var tipsLabel: UILabel!
     
+    @IBOutlet weak var streakinfoview: CustomUIView!
+    @IBOutlet weak var journalview: CustomUIView!
+    @IBOutlet weak var tipsView: CustomUIView!
+    
+    // MARK: – Properties
+    
     private let db = Firestore.firestore()
     private var journalListener: ListenerRegistration?
     
@@ -34,9 +40,25 @@ class HomeVC: UIViewController {
         return df
     }()
     
+    // MARK: – Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        streakinfoview.isUserInteractionEnabled = true
+        journalview.isUserInteractionEnabled = true
+        tipsView.isUserInteractionEnabled = true
+
+        // attach a tap gesture to each
+        let streakTap = UITapGestureRecognizer(target: self, action: #selector(streakInfoTapped))
+        streakinfoview.addGestureRecognizer(streakTap)
+
+        let journalTap = UITapGestureRecognizer(target: self, action: #selector(journalTapped))
+        journalview.addGestureRecognizer(journalTap)
+
+        let tipsTap = UITapGestureRecognizer(target: self, action: #selector(tipsViewTapped))
+        tipsView.addGestureRecognizer(tipsTap)
+        
         fetchUserName()
         subscribeToJournals()
         fetchRandomTip()
@@ -46,18 +68,9 @@ class HomeVC: UIViewController {
         super.viewWillDisappear(animated)
         journalListener?.remove()
     }
-    // Do any additional setup after loading the view.
     
+    // MARK: – User
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     private func fetchUserName() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         db.collection("users").document(uid).getDocument { [weak self] snap, error in
@@ -75,38 +88,37 @@ class HomeVC: UIViewController {
         }
     }
     
-    // MARK: - Journals
+    // MARK: – Journals
     
     private func subscribeToJournals() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         journalListener = db.collection("journals")
             .whereField("userId", isEqualTo: uid)
-            .order(by: "date", descending: true)
             .addSnapshotListener { [weak self] snap, err in
                 guard let self = self else { return }
                 if let err = err {
-                    print("Journal listener error:", err)
+                    print("Journal listener error:", err.localizedDescription)
                     return
                 }
+                
                 let docs = snap?.documents ?? []
                 print("Received \(docs.count) journal docs")
                 
-                // Decode
-                var entries: [JournalModel] = []
-                for doc in docs {
+                // Decode into models
+                var entries: [JournalModel] = docs.compactMap { doc in
                     let d = doc.data()
                     guard
-                        let ts       = d["date"]      as? Timestamp,
-                        let title    = d["title"]     as? String,
-                        let content  = d["content"]   as? String,
-                        let emoRaw   = d["emotion"]   as? Int,
-                        let emotion  = Emotion(rawValue: emoRaw)
+                        let ts      = d["date"]      as? Timestamp,
+                        let title   = d["title"]     as? String,
+                        let content = d["content"]   as? String,
+                        let emoRaw  = d["emotion"]   as? Int,
+                        let emotion = Emotion(rawValue: emoRaw)
                     else {
-                        continue
+                        return nil
                     }
                     let images = d["imageURLs"] as? [String] ?? []
-                    entries.append(JournalModel(
+                    return JournalModel(
                         id:        doc.documentID,
                         userId:    uid,
                         title:     title,
@@ -114,65 +126,98 @@ class HomeVC: UIViewController {
                         content:   content,
                         imageURLs: images,
                         emotion:   emotion
-                    ))
+                    )
                 }
+                
+                // Manually sort by date descending
+                entries.sort { $0.date > $1.date }
                 
                 DispatchQueue.main.async {
                     if entries.isEmpty {
                         // No journals yet
-                        self.streaknumberLabel.text    = "0"
-                        self.streakLabel.text     = "Add a journal to fill in these values"
-                        self.avgemotionsLabel.text = ""
-                        
-                        self.journalTitleLabel.text     = "Add a journal to fill in these values"
-                        self.journalEmotionLabel.text   = ""
-                        self.journalContentLabel.text   = ""
-                        self.journalDateLabel.text      = ""
+                        self.streakLabel.text         = "0 days"
+                        self.avgemotionsLabel.text    = ""
+                        self.journalTitleLabel.text   = "Add a journal to fill in these values"
+                        self.journalEmotionLabel.text = ""
+                        self.journalContentLabel.text = ""
+                        self.journalDateLabel.text    = ""
                     } else {
-                        print(entries)
+                        // 1) Streak: “X day(s)”
                         let days = entries.currentStreak
-                        self.streaknumberLabel.text  = "\(days)"
-                        self.streakLabel.text   = days == 1 ? "Day" : "Days"
+                        self.streakLabel.text = days == 1
+                        ? "1 day"
+                        : "\(days) days"
                         
-                        let avgValue = entries
-                            .map { Double($0.emotion.rawValue) }
-                            .reduce(0, +)
-                        / Double(entries.count)
-                        let avgEmo = Emotion(rawValue: Int(avgValue.rounded())) ?? .happiness
-                        self.avgemotionsLabel.text = avgEmo.description
+                        // 2) Mode of last 5 emotions
+                        let lastFive = Array(entries.prefix(5))
+                        let freq = Dictionary(grouping: lastFive, by: { $0.emotion })
+                            .mapValues { $0.count }
+                        let mostFrequent = freq.max { $0.value < $1.value }?.key
+                        ?? .happiness
+                        self.avgemotionsLabel.text = mostFrequent.description
                         
+                        // 3) Populate latest entry
                         let latest = entries[0]
-                        self.journalTitleLabel.text    = latest.title
-                        self.journalEmotionLabel.text  = latest.emotion.description
-                        self.journalContentLabel.text  = latest.content
-                        self.journalDateLabel.text     = self.dateFormatter.string(from: latest.date)
+                        self.journalTitleLabel.text   = latest.title
+                        self.journalEmotionLabel.text = latest.emotion.description
+                        self.journalContentLabel.text = latest.content
+                        self.journalDateLabel.text    =
+                        self.dateFormatter.string(from: latest.date)
                     }
                 }
             }
+        
     }
     
+    // MARK: – Tips
     
     private func fetchRandomTip() {
-        db.collection("tips")
-            .getDocuments { [weak self] snap, error in
-                guard let self = self else { return }
-                if let error = error {
-                    print("tips fetch error:", error)
-                    return
-                }
-                
-                let tips = snap?.documents.compactMap { doc -> TipModel? in
-                    let d = doc.data()
-                    guard let q = d["quote"] as? String else { return nil }
-                    return TipModel(id: doc.documentID,
-                                    quote: q,
-                                    author: d["author"] as? String)
-                } ?? []
-                
-                let text = tips.randomElement()?.quote ?? "No tips available"
-                DispatchQueue.main.async {
-                    self.tipsLabel.text = text
-                }
+        db.collection("tips").getDocuments { [weak self] snap, error in
+            guard let self = self else { return }
+            if let error = error {
+                print("tips fetch error:", error.localizedDescription)
+                return
             }
+            let tips = snap?.documents.compactMap { doc -> TipModel? in
+                let d = doc.data()
+                guard let q = d["quote"] as? String else { return nil }
+                return TipModel(id: doc.documentID,
+                                quote: q,
+                                author: d["author"] as? String)
+            } ?? []
+            
+            let text = tips.randomElement()?.quote ?? "No tips available"
+            DispatchQueue.main.async {
+                self.tipsLabel.text = text
+            }
+        }
     }
+    
+    @objc private func streakInfoTapped() {
+      performSegue(withIdentifier: "ShowStreakInfo", sender: self)
+    }
+
+    @objc private func journalTapped() {
+      performSegue(withIdentifier: "ShowJournals", sender: self)
+    }
+
+    @objc private func tipsViewTapped() {
+      performSegue(withIdentifier: "ShowTips", sender: self)
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      switch segue.identifier {
+//      case "ShowStreakInfo":
+//        let dest = segue.destination as! StreakDetailVC
+//        // dest.streak = self.currentStreak
+//      case "ShowJournals":
+//        let dest = segue.destination as! JournalVC
+//        // dest.journals = self.entries
+//      case "ShowTips":
+//        let dest = segue.destination as! TipsVC
+//        // dest.tips = self.tipsArray
+//      default:
+//        break
+//      }
+//    }
 }
