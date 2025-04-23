@@ -8,9 +8,11 @@
 import UIKit
 import FirebaseFirestore
 
+// MARK: - JournalShowCaseVC
 class JournalShowCaseVC: UIViewController {
     
-    // MARK: – IBOutlets
+    // MARK: - IBOutlets
+    /// to present title, date, content, emotion, and image.
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var contentTextView: UITextView!
@@ -18,18 +20,21 @@ class JournalShowCaseVC: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var topjournaltitlelabel: UILabel!
     
-    // MARK: – Properties
+    // MARK: - Properties
+    /// ID of the journal document to load.
     var journalId: String!
     private let db = Firestore.firestore()
     
-    // MARK: – Lifecycle
+    // MARK: - Lifecycle
+    ///  ID is provided.
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(journalId != nil, "journalId must be set before presenting!")
         loadJournal()
     }
     
-    // MARK: – Firestore Fetch
+    // MARK: - Data Fetching
+    
     private func loadJournal() {
         let docRef = db.collection("journals").document(journalId)
         docRef.getDocument { [weak self] snapshot, error in
@@ -43,7 +48,7 @@ class JournalShowCaseVC: UIViewController {
                 return
             }
             
-            // Manually map fields
+            // Map Firestore fields to local variables
             let title      = data["title"] as? String ?? ""
             let ts         = data["date"] as? Timestamp
             let date       = ts?.dateValue() ?? Date()
@@ -52,7 +57,7 @@ class JournalShowCaseVC: UIViewController {
             let emotion    = Emotion(rawValue: rawEmotion) ?? .serenity
             let imageURLs  = data["imageURLs"] as? [String] ?? []
             
-            // Update UI on main
+            // Update UI
             DispatchQueue.main.async {
                 self.topjournaltitlelabel.text = title
                 self.titleLabel.text           = title

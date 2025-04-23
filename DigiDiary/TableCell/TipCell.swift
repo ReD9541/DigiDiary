@@ -8,21 +8,25 @@
 import UIKit
 
 class TipCell: UITableViewCell {
-  @IBOutlet weak var quoteLabel:  UILabel!
-  @IBOutlet weak var authorLabel: UILabel!
-
-  @MainActor
-  func configure(with tip: Tip) {
     
-    quoteLabel.numberOfLines  = 0
-    quoteLabel.lineBreakMode  = .byWordWrapping
-    quoteLabel.text           = "“\(tip.quote)”"
+    // MARK: - IBOutlets
+    @IBOutlet weak var quoteLabel:  UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
 
-    authorLabel.font          = UIFont.italicSystemFont(ofSize: 14)
-    authorLabel.textColor     = .darkGray
-    authorLabel.text          = tip.author
+    
+    // MARK: - Populating Cell (
+    @MainActor
+    func configure(with tip: Tip) {
+        //to fix word wrapping so it doesn't break
+        quoteLabel.numberOfLines  = 0
+        quoteLabel.lineBreakMode  = .byWordWrapping
+        quoteLabel.text           = "“\(tip.quote)”"
 
-      contentView.layer.cornerRadius = 8
-  }
+        //to make author label in italics
+        authorLabel.font          = UIFont.italicSystemFont(ofSize: 14)
+        authorLabel.textColor     = .darkGray
+        authorLabel.text          = tip.author
+
+        contentView.layer.cornerRadius = 8
+    }
 }
-
