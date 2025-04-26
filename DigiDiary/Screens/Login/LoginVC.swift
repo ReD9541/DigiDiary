@@ -11,7 +11,7 @@ import FirebaseAuth
 class LoginVC: UIViewController {
     
     // MARK: - Initialization
-
+    
     @IBOutlet private weak var signupLabelButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -34,7 +34,7 @@ class LoginVC: UIViewController {
     @IBAction func unwindToLogin(_ segue: UIStoryboardSegue) {
     }
     
-
+    
     @IBAction func loginTapped(_ sender: UIButton) {
         
         let email = emailTextField.text ?? ""
@@ -77,11 +77,5 @@ class LoginVC: UIViewController {
         return email.range(of: pattern, options: .regularExpression) != nil
     }
     
-    
-    private func showAlert(title: String, message: String) {
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(.init(title: "OK", style: .default))
-        present(ac, animated: true)
-    }
     
 }

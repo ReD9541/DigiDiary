@@ -13,7 +13,6 @@ import FirebaseAuth
 class AddJournalVC: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet private weak var topbarjournaltitleLabel: UILabel!
     @IBOutlet private weak var journaltitleTextField: UITextField!
     @IBOutlet private weak var contentTextField: UITextView!
     @IBOutlet private weak var imgURLTextField: UITextField!
@@ -22,13 +21,14 @@ class AddJournalVC: UIViewController {
     @IBOutlet private weak var addthisjournalButton: UIButton!
     
     // MARK: - Properties
-    private let db = Firestore.firestore()
+    private let repository = FirebaseRepository()
     private var selectedEmotion: Emotion = .serenity
     private let emotions = Emotion.allCases
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Add Journal"
         stylizeUI()
         setupDateLabel()
         setupEmotionMenu()
@@ -73,60 +73,50 @@ class AddJournalVC: UIViewController {
     }
     
     // MARK: - Actions
-//to update the title as the user types the title
+    //to update the title as the user types the title
     @IBAction private func journaltitletextFieldEdited(_ sender: Any) {
-        topbarjournaltitleLabel.text = journaltitleTextField.text
+        title = journaltitleTextField.text
     }
     
     //inpout validation.
     @IBAction private func addthisjournalButtonTapped(_ sender: UIButton) {
-        guard let title = journaltitleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-              !title.isEmpty else {
-            return showAlert(message: "Please enter a journal title.")
+        let title = journaltitleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        guard !title.isEmpty else {
+            return showAlert(title: "Title Required", message: "Please enter a journal title.")
         }
         let content = contentTextField.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let rawURL  = imgURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let imageURLs = rawURL.isEmpty ? [] : [rawURL]
-        guard let uid = Auth.auth().currentUser?.uid else {
-            return showAlert(message: "You must be logged in to add a journal.")
-        }
-        let data: [String:Any] = [
-            "userId":    uid,
-            "title":     title,
-            "date":      Timestamp(date: Date()),
-            "content":   content,
-            "imageURLs": imageURLs,
-            "emotion":   selectedEmotion.rawValue
-        ]
-        var ref: DocumentReference? = nil
-        ref = db.collection("journals").addDocument(data: data) { [weak self] error in
+        let date = Date()
+        
+        repository.addJournal(
+            title: title,
+            content: content,
+            imageURLs: imageURLs,
+            emotion: selectedEmotion,
+            date: date
+        ) { [weak self] newId, error in
             guard let self = self else { return }
-            if let error = error {
-                self.showAlert(message: "Failed to save journal: \(error.localizedDescription)")
-            } else if let newId = ref?.documentID {
-                let successAlert = UIAlertController(
-                    title:   "Success",
-                    message: "Your journal was saved!",
-                    preferredStyle: .alert
-                )
-                successAlert.addAction(.init(title: "View Entry", style: .default) { _ in
-                    self.performSegue(withIdentifier: "showJournalSegue", sender: newId)
-                })
-                successAlert.addAction(
-                    UIAlertAction(title: "Done", style: .default) { _ in
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.showAlert(title: "Save Unsuccessful", message: "Failed to save journal: \(error.localizedDescription)")
+                } else if let id = newId {
+                    let alert = UIAlertController(
+                        title: "Success",
+                        message: "Your journal was saved!",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(.init(title: "View Entry", style: .default) { _ in
+                        self.performSegue(withIdentifier: "showJournalSegue", sender: id)
+                    })
+                    alert.addAction(.init(title: "Done", style: .default) { _ in
                         self.navigationController?.popToRootViewController(animated: false)
                         self.tabBarController?.selectedIndex = 2
-                    }
-                )
-                self.present(successAlert, animated: true)
+                    })
+                    self.present(alert, animated: true)
+                }
             }
         }
-    }
-    
-    // MARK: - Helpers
-    private func showAlert(title: String = "Oops!", message: String) {
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(.init(title: "OK", style: .default))
-        present(ac, animated: true)
+        
     }
 }

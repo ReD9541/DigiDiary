@@ -29,7 +29,7 @@ class HomeVC: UIViewController {
     
     // MARK: – Properties
     
-    private let db = Firestore.firestore()
+    private let repository = FirebaseRepository()
     private var journalListener: ListenerRegistration?
     
     private lazy var dateFormatter: DateFormatter = {
@@ -43,6 +43,8 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Home"
         
         streakinfoview.isUserInteractionEnabled = true
         journalview.isUserInteractionEnabled = true
@@ -61,135 +63,75 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchUserName()
-        fetchRandomTip()
-        subscribeToJournals()
+               guard let uid = Auth.auth().currentUser?.uid else { return }
+               
+               repository.fetchUsername(for: uid) { [weak self] username, error in
+                   DispatchQueue.main.async {
+                       self?.welcomeusernameLabel.text = username.map { "Welcome \($0)" }
+                                                               ?? "Welcome!"
+                   }
+               }
+               
+               // tear down any old listener first
+               journalListener?.remove()
+               journalListener = repository.subscribeToJournals(for: uid) { [weak self] entries, error in
+                   if let entries = entries {
+                       self?.processJournalEntries(entries)
+                   }
+               }
+               
+               repository.fetchRandomTip { [weak self] tip, error in
+                   DispatchQueue.main.async {
+                       self?.tipsLabel.text = tip?.quote ?? "No tips available"
+                   }
+               }
     }
+    
+    private func processJournalEntries(_ entries: [JournalModel]) {
+        //  Sort newest first
+        let sortedEntries = entries.sorted { $0.date > $1.date }
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+
+            if sortedEntries.isEmpty {
+                // No journals → show placeholder UI
+                self.streakLabel.text         = "0 days"
+                self.avgemotionsLabel.text    = ""
+                self.journalTitleLabel.text   = "Add a journal to fill in these values"
+                self.journalEmotionLabel.text = ""
+                self.journalContentLabel.text = ""
+                self.journalDateLabel.text    = ""
+            } else {
+                //  calculate streak
+                let days = sortedEntries.currentStreak
+                self.streakLabel.text = days == 1 ? "1 day" : "\(days) days"
+
+                // calculate most frequent emotion in last 5 entries
+                let lastFive = Array(sortedEntries.prefix(5))
+                let freq = Dictionary(grouping: lastFive, by: { $0.emotion })
+                            .mapValues { $0.count }
+                let mostFrequent = freq.max { $0.value < $1.value }?.key
+                                    ?? .happiness
+                self.avgemotionsLabel.text = mostFrequent.description
+
+                // Show latest journal details
+                let latest = sortedEntries[0]
+                self.journalTitleLabel.text   = latest.title
+                self.journalEmotionLabel.text = latest.emotion.description
+                self.journalContentLabel.text = latest.content
+                self.journalDateLabel.text    = self.dateFormatter.string(from: latest.date)
+            }
+        }
+    }
+
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         journalListener?.remove()
     }
     
-    // MARK: – User
     
-    private func fetchUserName() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        db.collection("users").document(uid).getDocument { [weak self] snap, error in
-            guard let self = self else { return }
-            if let data = snap?.data(),
-               let username = data["username"] as? String {
-                DispatchQueue.main.async {
-                    self.welcomeusernameLabel.text = "Welcome \(username)"
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.welcomeusernameLabel.text = "Welcome!"
-                }
-            }
-        }
-    }
-    
-    // MARK: – Journals
-    
-    private func subscribeToJournals() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        journalListener = db.collection("journals")
-            .whereField("userId", isEqualTo: uid)
-            .addSnapshotListener { [weak self] snap, err in
-                guard let self = self else { return }
-                if let err = err {
-                    print("Journal listener error:", err.localizedDescription)
-                    return
-                }
-                
-                let docs = snap?.documents ?? []
-                print("Received \(docs.count) journal docs")
-                
-                // Decode into models
-                var entries: [JournalModel] = docs.compactMap { doc in
-                    let d = doc.data()
-                    guard
-                        let ts      = d["date"]      as? Timestamp,
-                        let title   = d["title"]     as? String,
-                        let content = d["content"]   as? String,
-                        let emoRaw  = d["emotion"]   as? Int,
-                        let emotion = Emotion(rawValue: emoRaw)
-                    else {
-                        return nil
-                    }
-                    let images = d["imageURLs"] as? [String] ?? []
-                    return JournalModel(
-                        id:        doc.documentID,
-                        userId:    uid,
-                        title:     title,
-                        date:      ts.dateValue(),
-                        content:   content,
-                        imageURLs: images,
-                        emotion:   emotion
-                    )
-                }
-                
-                entries.sort { $0.date > $1.date }
-                
-                DispatchQueue.main.async {
-                    if entries.isEmpty {
-                        // No journals yet
-                        self.streakLabel.text         = "0 days"
-                        self.avgemotionsLabel.text    = ""
-                        self.journalTitleLabel.text   = "Add a journal to fill in these values"
-                        self.journalEmotionLabel.text = ""
-                        self.journalContentLabel.text = ""
-                        self.journalDateLabel.text    = ""
-                    } else {
-                        let days = entries.currentStreak
-                        self.streakLabel.text = days == 1
-                        ? "1 day"
-                        : "\(days) days"
-                        
-                        let lastFive = Array(entries.prefix(5))
-                        let freq = Dictionary(grouping: lastFive, by: { $0.emotion })
-                            .mapValues { $0.count }
-                        let mostFrequent = freq.max { $0.value < $1.value }?.key
-                        ?? .happiness
-                        self.avgemotionsLabel.text = mostFrequent.description
-                        
-                        let latest = entries[0]
-                        self.journalTitleLabel.text   = latest.title
-                        self.journalEmotionLabel.text = latest.emotion.description
-                        self.journalContentLabel.text = latest.content
-                        self.journalDateLabel.text    =
-                        self.dateFormatter.string(from: latest.date)
-                    }
-                }
-            }
-        
-    }
-    
-    // MARK: – Tips
-    
-    private func fetchRandomTip() {
-        db.collection("tips").getDocuments { [weak self] snap, error in
-            guard let self = self else { return }
-            if let error = error {
-                print("tips fetch error:", error.localizedDescription)
-                return
-            }
-            let tips = snap?.documents.compactMap { doc -> TipModel? in
-                let d = doc.data()
-                guard let q = d["quote"] as? String else { return nil }
-                return TipModel(id: doc.documentID,
-                                quote: q,
-                                author: d["author"] as? String)
-            } ?? []
-            
-            let text = tips.randomElement()?.quote ?? "No tips available"
-            DispatchQueue.main.async {
-                self.tipsLabel.text = text
-            }
-        }
-    }
     
     @objc private func streakInfoTapped() {
         performSegue(withIdentifier: "ShowStreakInfo", sender: self)

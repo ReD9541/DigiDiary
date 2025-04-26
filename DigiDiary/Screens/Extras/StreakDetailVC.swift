@@ -13,7 +13,7 @@ import FirebaseFirestore
 /// I present detailed journaling statistics to the user,
 /// fetching entry data in real time and updating the UI.
 class StreakDetailVC: UIViewController {
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var currentStreakLabel:      UILabel!
@@ -22,50 +22,41 @@ class StreakDetailVC: UIViewController {
     @IBOutlet weak var mostCommonEmotionLabel:  UILabel!
     @IBOutlet weak var entriesPerWeekLabel:     UILabel!
     @IBOutlet weak var lastJournalDateLabel:    UILabel!
-
+    
     // MARK: - Properties
-    /// I hold a reference to Firestore for fetching journals.
-    private let db = Firestore.firestore()
-    /// I keep the listener so I can detach it when not needed.
+    private let repository = FirebaseRepository()
     private var listener: ListenerRegistration?
-    /// I format dates in a medium style for display.
     private lazy var dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
         df.timeStyle = .none
         return df
     }()
-
+    
     // MARK: - Lifecycle
-    /// I start listening to journal updates every time the view appears.
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Streak Detail"
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        subscribeToJournals()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        listener = repository.subscribeToJournalEntries(for: uid) { [weak self] entries, error in
+            guard let self = self, let entries = entries else { return }
+            let stats = entries.streakStats
+            DispatchQueue.main.async {
+                self.updateUI(with: stats)
+            }
+        }
     }
     /// I detach the Firestore listener when the view disappears.
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         listener?.remove()
     }
-
-    // MARK: - Firestore Subscription
-    /// to subscribe to the user's journal collection
-    /// and map snapshots into StreakStats for the UI.
-    private func subscribeToJournals() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        listener = db.collection("journals")
-            .whereField("userId", isEqualTo: uid)
-            .addSnapshotListener { [weak self] snap, _ in
-                guard let self = self,
-                      let docs = snap?.documents else { return }
-                let entries = docs.compactMap(Journal.init(from:))
-                let stats   = entries.streakStats
-                DispatchQueue.main.async {
-                    self.updateUI(with: stats)
-                }
-            }
-    }
-
+    
     // MARK: - UI Updates
     /// assignign formatted stats values to my labels.
     private func updateUI(with stats: StreakStats) {
@@ -91,7 +82,7 @@ struct StreakStats {
 
 // MARK: - Journal Array Extensions
 extension Array where Element == Journal {
-
+    
     // MARK: - calculate Stats
     var streakStats: StreakStats {
         let sorted   = self.sorted { $0.date > $1.date }
@@ -102,7 +93,7 @@ extension Array where Element == Journal {
         let common   = freq.max { $0.value < $1.value }?.key ?? .happiness
         let perWeek  = sorted.entriesPerWeek
         let lastDate = sorted.first?.date
-
+        
         return StreakStats(
             currentStreak:     current,
             longestStreak:     longest,
@@ -112,13 +103,13 @@ extension Array where Element == Journal {
             lastEntryDate:     lastDate
         )
     }
-
+    
     // MARK: - Current Streak Calculation
     /// using the same logic as in home vc
     var currentStreak: Int {
         let cal  = Calendar.current
         let days = Set(self.map { cal.startOfDay(for: $0.date) })
-
+        
         var day = cal.startOfDay(for: Date())
         if !days.contains(day) {
             guard let yesterday = cal.date(byAdding: .day, value: -1, to: day),
@@ -127,7 +118,7 @@ extension Array where Element == Journal {
             }
             day = yesterday
         }
-
+        
         var streak = 0
         while days.contains(day) {
             streak += 1
@@ -136,13 +127,13 @@ extension Array where Element == Journal {
         }
         return streak
     }
-
+    
     // MARK: - Longest Streak Calculation
     /// I scan through all journal dates to fin
     var longestStreak: Int {
         let cal  = Calendar.current
         let days = Set(self.map { cal.startOfDay(for: $0.date) })
-
+        
         return days.reduce(into: 0) { best, start in
             var length = 0
             var day    = start
@@ -155,7 +146,7 @@ extension Array where Element == Journal {
             // it runs for all the journal days and saves best or longest streak
         }
     }
-
+    
     // MARK: - Entries Per Week Calculation
     var entriesPerWeek: Double {
         let cal   = Calendar.current

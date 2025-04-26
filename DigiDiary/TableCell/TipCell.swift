@@ -12,7 +12,7 @@ class TipCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var quoteLabel:  UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-
+    
     
     // MARK: - Populating Cell (
     @MainActor
@@ -21,12 +21,14 @@ class TipCell: UITableViewCell {
         quoteLabel.numberOfLines  = 0
         quoteLabel.lineBreakMode  = .byWordWrapping
         quoteLabel.text           = "“\(tip.quote)”"
-
+        
         //to make author label in italics
         authorLabel.font          = UIFont.italicSystemFont(ofSize: 14)
         authorLabel.textColor     = .darkGray
         authorLabel.text          = tip.author
-
+        
         contentView.layer.cornerRadius = 8
+        backgroundColor                  = .clear
+        selectionStyle                   = .none
     }
 }

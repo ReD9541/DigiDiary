@@ -19,99 +19,85 @@ class ProfileSettingsVC: UIViewController {
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var oldpasswordTextField: UITextField!
     
-    private let auth = Auth.auth()
-    private let db   = Firestore.firestore()
+    private let repository = FirebaseRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Profile"
         loadUserProfile()
     }
     
-
+    
     // MARK: - Load User Profile
-        private func loadUserProfile() {
-            guard let user = auth.currentUser else { return }
-            emailLabel.text = user.email
-            
-            db.collection("users").document(user.uid)
-              .getDocument { [weak self] snap, error in
-                guard let self = self else { return }
-                if let data = snap?.data(), let username = data["username"] as? String {
-                    DispatchQueue.main.async { self.usernameTextField.text = username }
-                } else if let error = error {
-                    self.showAlert(title: "Error", message: error.localizedDescription)
+    // MARK: - Load Profile
+    private func loadUserProfile() {
+        guard let user = Auth.auth().currentUser else { return }
+        emailLabel.text = user.email
+        repository.fetchUsername(for: user.uid) { [weak self] username, error in
+            DispatchQueue.main.async {
+                if let name = username {
+                    self?.usernameTextField.text = name
+                } else {
+                    self?.showAlert(title: "Error", message: error?.localizedDescription ?? "Unable to load username.")
                 }
             }
-        }
-        
-        // MARK: - Update Username
-        @IBAction func resetUsernameTapped(_ sender: UIButton) {
-            guard let user = auth.currentUser,
-                  let email = user.email,
-                  let oldPW = oldpasswordTextField.text, !oldPW.isEmpty,
-                  let newName = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-                  !newName.isEmpty
-            else {
-                showAlert(title: "Incomplete Data", message: "Please enter your current password and a new username.")
-                return
-            }
-            
-            let credential = EmailAuthProvider.credential(withEmail: email, password: oldPW)
-            user.reauthenticate(with: credential) { [weak self] result, error in
-                guard let self = self else { return }
-                if let error = error {
-                    self.showAlert(title: "Authentication Failed", message: error.localizedDescription)
-                    return
-                }
-                // Auth successful; now update username
-                self.db.collection("users").document(user.uid)
-                  .updateData(["username": newName]) { err in
-                    if let err = err {
-                        self.showAlert(title: "Update Failed", message: err.localizedDescription)
-                    } else {
-                        self.showAlert(title: "Success", message: "Username updated.")
-                    }
-                }
-            }
-        }
-        
-        // MARK: - Update Password 
-        @IBAction func resetPasswordTapped(_ sender: UIButton) {
-            guard let user = auth.currentUser,
-                  let email = user.email,
-                  let oldPW = oldpasswordTextField.text, !oldPW.isEmpty,
-                  let newPW = newPasswordTextField.text, newPW.count >= 6
-            else {
-                showAlert(title: "Invalid Input", message: "Enter current password and a new password (min 6 chars).")
-                return
-            }
-            
-            let credential = EmailAuthProvider.credential(withEmail: email, password: oldPW)
-            user.reauthenticate(with: credential) { [weak self] result, error in
-                guard let self = self else { return }
-                if let error = error {
-                    self.showAlert(title: "Authentication Failed", message: error.localizedDescription)
-                    return
-                }
-                // Auth successful; now update password
-                user.updatePassword(to: newPW) { err in
-                    if let err = err {
-                        self.showAlert(title: "Password Reset Failed", message: err.localizedDescription)
-                    } else {
-                        self.showAlert(title: "Success", message: "Your password has been changed.")
-                        DispatchQueue.main.async {
-                            self.oldpasswordTextField.text = ""
-                            self.newPasswordTextField.text = ""
-                        }
-                    }
-                }
-            }
-        }
-        
-        // MARK: - Alerts
-        private func showAlert(title: String, message: String) {
-            let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            ac.addAction(.init(title: "OK", style: .default))
-            present(ac, animated: true)
         }
     }
+    
+    // MARK: - Update Username
+    @IBAction func resetUsernameTapped(_ sender: UIButton) {
+        guard let currentPW = oldpasswordTextField.text, !currentPW.isEmpty,
+              let newName = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !newName.isEmpty else {
+            showAlert(title: "Incomplete Data",
+                      message: "Please enter your current password and a new username.")
+            return
+        }
+        
+        repository.updateUsername(currentPassword: currentPW,
+                                  newUsername: newName) { [weak self] error in
+            DispatchQueue.main.async {
+                if let err = error {
+                    self?.showAlert(title: "Update Failed", message: err.localizedDescription)
+                } else {
+                    self?.showAlert(title: "Success", message: "Username updated.")
+                    self?.oldpasswordTextField.text = ""
+                }
+            }
+        }
+    }
+    
+    // MARK: - Update Password
+    @IBAction func resetPasswordTapped(_ sender: UIButton) {
+        guard let currentPW = oldpasswordTextField.text, !currentPW.isEmpty,
+              let newPW = newPasswordTextField.text, newPW.count >= 6 else {
+            showAlert(title: "Invalid Input",
+                      message: "Enter current password and a new password (min 6 chars).")
+            return
+        }
+        
+        repository.updatePassword(currentPassword: currentPW,
+                                  newPassword: newPW) { [weak self] error in
+            DispatchQueue.main.async {
+                if let err = error {
+                    self?.showAlert(title: "Password Reset Failed", message: err.localizedDescription)
+                } else {
+                    self?.showAlert(title: "Success", message: "Your password has been changed.")
+                    self?.oldpasswordTextField.text = ""
+                    self?.newPasswordTextField.text = ""
+                }
+            }
+        }
+    }
+    
+    @IBAction func logOutButtonTapped(_ sender: UIButton) {
+        do {
+            try Auth.auth().signOut()
+            performSegue(withIdentifier: "unwindToLoginSegue", sender: self)
+        } catch {
+            showAlert(title: "Logout Failed", message: error.localizedDescription)
+        }
+    }
+    
+    
+}

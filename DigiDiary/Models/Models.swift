@@ -16,7 +16,7 @@ enum Emotion: Int, Codable, CaseIterable {
     case happiness
     case serenity
     case sadness
-
+    
     /// For users
     var description: String {
         switch self {
@@ -47,7 +47,7 @@ struct JournalModel: Codable, Identifiable {
     let content: String
     let imageURLs: [String]
     let emotion: Emotion
-
+    
     enum CodingKeys: String, CodingKey {
         case id, userId, title, date, content, imageURLs, emotion
     }
@@ -65,7 +65,7 @@ extension Array where Element == JournalModel {
         
         //coutnig the number of days
         var day = calendar.startOfDay(for: Date())
-
+        
         while entryDays.contains(day) {
             streak += 1
             
@@ -77,7 +77,7 @@ extension Array where Element == JournalModel {
         }
         //https://www.swiftbysundell.com/articles/computing-dates-in-swift/
         
-    
+        
         //return the consecutive days which had entries with today
         return streak
     }

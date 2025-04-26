@@ -9,24 +9,25 @@ import UIKit
 
 class JournalCell: UITableViewCell {
     
+    
     // MARK: - IBOutlets
-   
+    
     @IBOutlet weak var titleLabel:  UILabel!
     @IBOutlet weak var emotionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    
+    @IBOutlet weak var deleteJournal: UIButton!
     
     // MARK: - Populating Cell
     //populating the cell with data from a Journal instance.
     @MainActor
     func configure(with journal: Journal) {
-       
+        
         contentView.layer.cornerRadius  = 8
         backgroundColor                  = .clear
         selectionStyle                   = .none
         
-      
+        
         titleLabel.text    = journal.title
         emotionLabel.text  = journal.emotion.description
         
@@ -41,4 +42,6 @@ class JournalCell: UITableViewCell {
         contentLabel.numberOfLines = 0
         contentLabel.lineBreakMode = .byWordWrapping
     }
+    
 }
+

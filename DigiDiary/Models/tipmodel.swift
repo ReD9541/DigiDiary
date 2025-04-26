@@ -14,7 +14,7 @@ struct Tip {
     let quote: String
     let author: String
     let id: String
-
+    
     // MARK: Direct Initializer
     /// Creates a Tip instance with known values.
     init(quote: String, author: String, id: String) {
@@ -22,7 +22,7 @@ struct Tip {
         self.author = author
         self.id     = id
     }
-
+    
     // MARK: Firestore Initializer
     /// to constructs a Tip from a Firestore DocumentSnapshot.
     init?(from doc: DocumentSnapshot) {
@@ -33,7 +33,7 @@ struct Tip {
         else {
             return nil
         }
-
+        
         self.quote  = quote
         self.author = author
         self.id     = doc.documentID
