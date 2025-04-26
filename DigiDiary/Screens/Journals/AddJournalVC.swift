@@ -32,6 +32,7 @@ class AddJournalVC: UIViewController {
         stylizeUI()
         setupDateLabel()
         setupEmotionMenu()
+//        contentTextField. placeholder This is a sample Journal
     }
     
     // MARK: - Navigation

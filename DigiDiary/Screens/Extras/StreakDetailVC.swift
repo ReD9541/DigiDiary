@@ -37,7 +37,7 @@ class StreakDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Streak Detail"
+        title = "Your Streak Details"
     }
     
     override func viewWillAppear(_ animated: Bool) {

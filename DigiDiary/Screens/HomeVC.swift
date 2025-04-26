@@ -23,9 +23,9 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var tipsLabel: UILabel!
     
-    @IBOutlet weak var streakinfoview: CustomUIView!
-    @IBOutlet weak var journalview: CustomUIView!
-    @IBOutlet weak var tipsView: CustomUIView!
+    @IBOutlet weak var streakinfoview: UIButton!
+    @IBOutlet weak var journalview: UIButton!
+    @IBOutlet weak var tipsView: UIButton!
     
     // MARK: – Properties
     

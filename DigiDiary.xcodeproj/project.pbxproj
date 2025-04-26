@@ -18,6 +18,8 @@
 		9D5BF71D2DB0996D00FDE345 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 9D5BF71C2DB0996D00FDE345 /* FirebaseFirestoreCombine-Community */; };
 		9D5BF71F2DB0996D00FDE345 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9D5BF71E2DB0996D00FDE345 /* FirebaseStorage */; };
 		9D5BF7212DB0996D00FDE345 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 9D5BF7202DB0996D00FDE345 /* FirebaseStorageCombine-Community */; };
+		9D6434FC2DD373F900B56580 /* ThemeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6434FB2DD373F900B56580 /* ThemeKit */; };
+		9D77CEE12DC516D400F2B74F /* ThemeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9D77CEE02DC516D400F2B74F /* ThemeKit */; };
 		9DF64AEE2D9D08FB00B1857D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AED2D9D08FB00B1857D /* AppDelegate.swift */; };
 		9DF64AF02D9D08FB00B1857D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF64AEF2D9D08FB00B1857D /* SceneDelegate.swift */; };
 		9DF64AF72D9D08FE00B1857D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF64AF62D9D08FE00B1857D /* Assets.xcassets */; };
@@ -94,8 +96,10 @@
 				9D5BF7172DB0996D00FDE345 /* FirebaseCore in Frameworks */,
 				9D5BF7132DB0996D00FDE345 /* FirebaseAuth in Frameworks */,
 				9D5BF7112DB0996D00FDE345 /* FirebaseAppDistribution-Beta in Frameworks */,
+				9D77CEE12DC516D400F2B74F /* ThemeKit in Frameworks */,
 				9D5BF7152DB0996D00FDE345 /* FirebaseAuthCombine-Community in Frameworks */,
 				9D5BF71B2DB0996D00FDE345 /* FirebaseFirestore in Frameworks */,
+				9D6434FC2DD373F900B56580 /* ThemeKit in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 				9D5BF71C2DB0996D00FDE345 /* FirebaseFirestoreCombine-Community */,
 				9D5BF71E2DB0996D00FDE345 /* FirebaseStorage */,
 				9D5BF7202DB0996D00FDE345 /* FirebaseStorageCombine-Community */,
+				9D77CEE02DC516D400F2B74F /* ThemeKit */,
+				9D6434FB2DD373F900B56580 /* ThemeKit */,
 			);
 			productName = DigiDiary;
 			productReference = 9DF64AEA2D9D08FB00B1857D /* DigiDiary.app */;
@@ -230,6 +236,7 @@
 			mainGroup = 9DF64AE12D9D08FB00B1857D;
 			packageReferences = (
 				9D5BF70D2DB0996D00FDE345 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9D6434FA2DD373F900B56580 /* XCLocalSwiftPackageReference "../../Downloads/CreatingACardView/StartingProject/TutorialResources/ThemeKit" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 9DF64AEB2D9D08FB00B1857D /* Products */;
@@ -355,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -411,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -437,7 +444,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,7 +474,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -501,6 +508,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		9D6434FA2DD373F900B56580 /* XCLocalSwiftPackageReference "../../Downloads/CreatingACardView/StartingProject/TutorialResources/ThemeKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Downloads/CreatingACardView/StartingProject/TutorialResources/ThemeKit;
+		};
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
 		9D5BF70D2DB0996D00FDE345 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -563,6 +577,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D5BF70D2DB0996D00FDE345 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		9D6434FB2DD373F900B56580 /* ThemeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ThemeKit;
+		};
+		9D77CEE02DC516D400F2B74F /* ThemeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D5BF70D2DB0996D00FDE345 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = ThemeKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
